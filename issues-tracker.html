@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body>
-    <header class="max-w-[1600px] px-20 py-4 flex justify-between items-center">
+<body class="bg-[#f8fafc]">
+    <header class="bg-white max-w-[1600px] px-20 py-4 flex justify-between items-center">
         <div id="left-div" class="flex items-center gap-1">
             <img src="assets/github-logo.png" alt="GitHub logo" class="w-9">
             <h2 class="font-semibold text-xl">GitHub Issues Tracker</h2>
@@ -39,6 +39,34 @@
             <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
         </div>
     </header>
+    <section id="btn-container" class="bg-white rounded-md shadow-md max-w-[1110px] mx-auto mt-[60px] p-6 flex gap-2">
+        <button id="all-btn" class="btn btn-primary w-[120px] ">All</button>
+        <button id="open-btn" class="btn btn-outline w-[120px]">Open</button>
+        <button id="closed-btn" class="btn btn-outline w-[120px]">closed</button>
+    </section>
+    <section id="tracker-container" class="bg-white rounded-md shadow-md max-w-[1110px]  mx-auto mt-4 p-6 flex justify-between">
+        <div class="flex items-center gap-2">
+            <img src="assets/Aperture.png" alt="Aperture.png">
+            <div class="">
+                <p class="font-semibold text-[20px]"><span id="count">40</span> Issues</p>
+                <p class="text-gray-500">Track and manage your project issues</p>
+            </div>
+        </div>
+        <div class="flex gap-4">
+            <div class="flex items-center gap-1">
+                <div class="bg-[#00a96e] w-3 h-3 rounded-full"></div>
+                <p>Open</p>
+            </div>
+            <div class="flex items-center gap-1">
+                <div class="bg-[#A855F7] w-3 h-3 rounded-full"></div>
+                <p>Closed</p>
+            </div>
+            
+        </div>
+    </section>
+    <section id="issue-card-container" class="bg-white rounded-md shadow-md max-w-[1110px]  mx-auto mt-[60px] p-6 grid grid-cols-4">
+        
+    </section>
 </body>
 
 </html>
