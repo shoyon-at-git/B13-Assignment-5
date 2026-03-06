@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
 
     <!-- tailwindcss cdn + daisyui cdn -->
-     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- fonts -->
@@ -15,15 +16,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
-     <!-- font awesome -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
-    <h2 class="bg-red-500">Test</h2>
+
+<body class="bg-[#f8fafc] h-screen pt-[78px]">
+
+    <main class=" bg-[#ffffff] max-w-[520px] mx-auto  p-8 shadow-md rounded-lg">
+        <div class=" text-center flex flex-col justify-center items-center">
+            <img src="assets/github-logo.png" alt="Github Logo" class="mb-6">
+            <h1 class="mb-1 font-semibold text-2xl">GitHub Issues Tracker</h1>
+            <p class="text-[16px] text-gray-400 mb-6">Sign in to manage your issues</p>
+        </div>
+
+        <div>
+            <fieldset class="fieldset space-y-1">
+                <label class="label font-medium text-neutral text-[16px]">Username</label>
+                <input type="text" class="input w-full rounded-md" placeholder="Enter Username" />
+                <label class="label font-medium text-neutral text-[16px]">Password</label>
+                <input type="password" minlength="4" maxlength="8" class="input w-full rounded-md" placeholder="Enter Password" />
+
+                <button id="sign-in-btn" class="btn btn-primary my-6 font-semibold">Sign In</button>
+            </fieldset>
+        </div>
+
+        <div class="flex items-center gap-2 mb-6">
+            <hr class="flex-1 border-gray-300">
+            <span class="text-gray-400 text-sm">OR</span>
+            <hr class="flex-1 border-gray-300">
+        </div>
+        <div class="text-center space-y-2">
+            <p class="text-[16px] text-gray-400">Demo Credentials:</p>
+            <div class="p-6 bg-[#f8fafc] shadow-md rounded-sm">
+                <p><span class="font-semibold">Username:</span> admin</p>
+                <p><span class="font-semibold">Password:</span> admin123</p>
+            </div>
+        </div>
+    </main>
 
     <script src="scripts/script.js"></script>
 </body>
+
 </html>
