@@ -27,7 +27,7 @@
 
 <body class="bg-[#f8fafc]">
     <!-- header -->
-    <header class="bg-white max-w-[1600px] mx-auto px-20 py-4 flex justify-between items-center">
+    <header class="bg-white max-w-[1600px] mx-auto px-20 py-4 flex flex-col lg:flex-row justify-center lg:justify-between gap-4 items-center">
         <div id="left-div" class="flex items-center gap-1">
             <img src="assets/github-logo.png" alt="GitHub logo" class="w-9">
             <h2 class="font-semibold text-xl">GitHub Issues Tracker</h2>
@@ -40,7 +40,7 @@
             <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
         </div>
     </header>
-    <section id="btn-container" class="bg-white rounded-md shadow-md max-w-[1110px] mx-auto mt-[60px] p-6 flex gap-2">
+    <section id="btn-container" class="bg-white rounded-md shadow-md max-w-[1110px] mx-auto mt-3 lg:mt-[60px] p-6 flex gap-2 justify-center lg:justify-start">
         <button onclick="loadAll(); toggleButtons('all-btn')" id="all-btn"
             class="btn btn-primary w-[120px] ">All</button>
         <button onclick="toggleButtons('open-btn')" id="open-btn" class="btn btn-outline w-[120px]">Open</button>
