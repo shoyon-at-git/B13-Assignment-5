@@ -86,3 +86,17 @@ document.getElementById("closed-btn").addEventListener("click", ()=>{
     displayAll(filteredClosed);
     updateCount(filteredClosed);
 });
+
+const toggleButtons = (id) =>{
+    const buttons = document.querySelectorAll("#all-btn, #open-btn, #closed-btn")
+    // console.log(buttons);
+    for(let button of buttons){
+        button.classList.remove("btn-primary");
+        button.classList.add("btn-outline");
+    }
+    const selected = document.getElementById(id);
+    selected.classList.add("btn-primary");
+    selected.classList.remove("btn-outline");
+
+    
+};

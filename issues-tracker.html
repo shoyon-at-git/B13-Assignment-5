@@ -40,9 +40,9 @@
         </div>
     </header>
     <section id="btn-container" class="bg-white rounded-md shadow-md max-w-[1110px] mx-auto mt-[60px] p-6 flex gap-2">
-        <button onclick="loadAll()" id="all-btn" class="btn btn-primary w-[120px] ">All</button>
-        <button id="open-btn" class="btn btn-outline w-[120px]">Open</button>
-        <button id="closed-btn" class="btn btn-outline w-[120px]">closed</button>
+        <button onclick="loadAll(); toggleButtons('all-btn')" id="all-btn" class="btn btn-primary w-[120px] ">All</button>
+        <button onclick="toggleButtons('open-btn')" id="open-btn" class="btn btn-outline w-[120px]">Open</button>
+        <button onclick="toggleButtons('closed-btn')" id="closed-btn" class="btn btn-outline w-[120px]">closed</button>
     </section>
     <section id="tracker-container" class="bg-white rounded-md shadow-md max-w-[1110px]  mx-auto mt-4 p-6 flex justify-between">
         <div class="flex items-center gap-2">
