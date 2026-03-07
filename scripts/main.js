@@ -1,5 +1,8 @@
 // console.log("inside issue tracker page!!");
 const issueCardContainer = document.getElementById("issue-card-container");
+let all =[];
+let filteredOpen = [];
+let filteredClosed = []; 
 
 const createSpans = (arr) =>{
     const htmlEl = arr.map(el => `<span class="bg-orange-300/90 px-1 border text-xs rounded-3xl">${el.toUpperCase()}</span>`);
@@ -18,6 +21,8 @@ const loadAll = async() =>{
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues"
     const res = await fetch(url);
     const json = await res.json();
+    all = json.data;
+    // console.log(all);
     displayAll(json.data);
     updateCount(json.data);
 };
@@ -68,3 +73,16 @@ const displayAll = (infoArr) =>{
 };
 
 loadAll();
+
+document.getElementById("open-btn").addEventListener("click", ()=>{
+    filteredOpen = all.filter(issue => issue.status.toLowerCase() ==="open");
+    console.log(filteredOpen);
+    displayAll(filteredOpen);
+    updateCount(filteredOpen);
+});
+document.getElementById("closed-btn").addEventListener("click", ()=>{
+    filteredClosed = all.filter(issue => issue.status.toLowerCase() ==="closed");
+    console.log(filteredClosed);
+    displayAll(filteredClosed);
+    updateCount(filteredClosed);
+});
