@@ -62,21 +62,23 @@ const displayAll = (infoArr) =>{
         newCard.className = `cursor-pointer shadow-sm rounded-md p-4 border-t-4
         ${borderColor}`;
         newCard.innerHTML = `
-        <div class="flex justify-between mb-4">
-            <img src="${statusImg}" alt="">
-            <p class="px-6 rounded-3xl shadow-md ${bgPriority} ${textPriority}">${element.priority.toUpperCase()}</p>
-        </div>
-        <div class="space-y-2">
-            <h2 class="font-semibold h-12  text-[14px]">${element.title}</h2>
-            <p class="line-clamp-2 text-[#64748b]">${element.description}</p>
-        </div>
-        <div class="mt-3 mb-4 flex flex-wrap gap-2">
-            ${createSpans(element.labels)}
-        </div>
-        <hr class ="border-gray-300">
-        <div class ="p-4 pb-0 text-sm text-gray-500 space-y-2">
-            <p>#${element.id} by ${element.author}</p>
-            <p>${new Date(element.createdAt).toLocaleDateString()}</p>
+        <div onclick="loadIssueDetails(${element.id})">
+            <div class="flex justify-between mb-4">
+                <img src="${statusImg}" alt="">
+                <p class="px-6 rounded-3xl shadow-md ${bgPriority} ${textPriority}">${element.priority.toUpperCase()}</p>
+            </div>
+            <div class="space-y-2">
+                <h2 class="font-semibold h-12  text-[14px]">${element.title}</h2>
+                <p class="line-clamp-2 text-[#64748b]">${element.description}</p>
+            </div>
+            <div class="mt-3 mb-4 flex flex-wrap gap-2">
+                ${createSpans(element.labels)}
+            </div>
+            <hr class ="border-gray-300">
+            <div class ="p-4 pb-0 text-sm text-gray-500 space-y-2">
+                <p>#${element.id} by ${element.author}</p>
+                <p>${new Date(element.createdAt).toLocaleDateString()}</p>
+            </div>
         </div>
         `
         issueCardContainer.appendChild(newCard);
@@ -118,4 +120,52 @@ const toggleButtons = (id) =>{
     selected.classList.remove("btn-outline");
 
     
+};
+
+const loadIssueDetails = async(id) =>{
+    // console.log(id);
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    // console.log(url);
+    const res = await fetch(url);
+    const json = await res.json();
+    displayDetails(json.data);
+};
+const displayDetails =(details) =>{
+    // console.log(details);
+    const detailsContainer = document.getElementById("details-container");
+    // console.log(detailsContainer);
+    detailsContainer.innerHTML=`
+    <div class="space-y-4">
+            <h1 class="text-xl font-bold">${details.title}</h1>
+
+            <div class="text-sm text-gray-500">
+                <span class="btn btn-success rounded-3xl h-6">
+                    ${details.status === "open" ? "Opened" : "Closed"}
+                </span>
+                <span class="">
+                    ${details.status === "open" ? "Opened" : "Closed"}
+                </span> by <strong>${details.author}</strong>
+                 ${new Date(details.createdAt).toLocaleDateString()}
+            </div>
+
+            <p class="text-gray-700">
+                ${details.description}
+            </p>
+
+            <div class="flex items-center gap-2 flex-wrap">
+                ${createSpans(details.labels)}
+            </div>
+            <div class="flex gap-28 my-10">
+                <div class="">
+                <p class="text-gray-700">Asssignee:</p>
+                <p class="text-xl font-bold">${!details.assignee ? "Assignnee not Found" : details.assignee}</p>
+                </div>
+                <div>
+                <p class="text-gray-700">Priority:</p>
+                <p class = "bg-red-500 w-fit px-4 text-white text-center rounded-xl">${details.priority}</p>
+                </div>
+            </div>
+        </div>
+    `;
+    document.getElementById("details_modal").showModal();
 };

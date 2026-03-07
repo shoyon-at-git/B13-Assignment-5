@@ -26,6 +26,7 @@
 </head>
 
 <body class="bg-[#f8fafc]">
+    <!-- header -->
     <header class="bg-white max-w-[1600px] mx-auto px-20 py-4 flex justify-between items-center">
         <div id="left-div" class="flex items-center gap-1">
             <img src="assets/github-logo.png" alt="GitHub logo" class="w-9">
@@ -40,11 +41,15 @@
         </div>
     </header>
     <section id="btn-container" class="bg-white rounded-md shadow-md max-w-[1110px] mx-auto mt-[60px] p-6 flex gap-2">
-        <button onclick="loadAll(); toggleButtons('all-btn')" id="all-btn" class="btn btn-primary w-[120px] ">All</button>
+        <button onclick="loadAll(); toggleButtons('all-btn')" id="all-btn"
+            class="btn btn-primary w-[120px] ">All</button>
         <button onclick="toggleButtons('open-btn')" id="open-btn" class="btn btn-outline w-[120px]">Open</button>
         <button onclick="toggleButtons('closed-btn')" id="closed-btn" class="btn btn-outline w-[120px]">closed</button>
     </section>
-    <section id="tracker-container" class="bg-white rounded-md shadow-md max-w-[1110px]  mx-auto mt-4 p-6 flex justify-between">
+
+    <!-- info section -->
+    <section id="tracker-container"
+        class="bg-white rounded-md shadow-md max-w-[1110px]  mx-auto mt-4 p-6 flex justify-between">
         <div class="flex items-center gap-2">
             <img src="assets/Aperture.png" alt="Aperture.png">
             <div class="">
@@ -61,18 +66,37 @@
                 <div class="bg-[#A855F7] w-3 h-3 rounded-full"></div>
                 <p>Closed</p>
             </div>
-            
+
         </div>
     </section>
 
-    <section id="spinner" class="max-w-[1110px] mx-auto bg-white mt-6 rounded-md shadow-md flex justify-center py-48 hidden">
+    <!-- spinner -->
+    <section id="spinner"
+        class="max-w-[1110px] mx-auto bg-white mt-6 rounded-md shadow-md flex justify-center py-48 hidden">
         <span class="loading loading-spinner text-primary"></span>
     </section>
 
-    <section id="issue-card-container" class="bg-[#fbfbfb] rounded-md shadow-md max-w-[1110px]  mx-auto mt-[60px] p-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    
+    <!-- cards holder -->
+    <section id="issue-card-container"
+        class="bg-[#fbfbfb] rounded-md shadow-md max-w-[1110px]  mx-auto mt-[60px] p-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
     </section>
 
+    <!-- modal -->
+    <!-- Open the modal using ID.showModal() method -->
+    <dialog id="details_modal" class="modal">
+        <div class="modal-box">
+            <div id="details-container">
+                
+            </div>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn btn-primary">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
     <script src="scripts/main.js"></script>
 </body>
 
