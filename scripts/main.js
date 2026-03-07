@@ -3,6 +3,7 @@ const issueCardContainer = document.getElementById("issue-card-container");
 let all =[];
 let filteredOpen = [];
 let filteredClosed = []; 
+let filteredSearch =[];
 
 const createSpans = (arr) =>{
     const htmlEl = arr.map(el => `<span class="bg-orange-300/90 px-1 border text-xs rounded-3xl">${el.toUpperCase()}</span>`);
@@ -169,3 +170,21 @@ const displayDetails =(details) =>{
     `;
     document.getElementById("details_modal").showModal();
 };
+
+const searchInput = document.getElementById("input-search");
+searchInput.addEventListener("keydown", (e)=>{
+    if(e.key ==="Enter"){
+        const inputValue = searchInput.value.trim().toLowerCase();
+        // console.log(inputValue);
+        const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${inputValue}`
+        // console.log(url);
+        showSpinner();
+        fetch(url)
+            .then(res => res.json())
+            .then(data=>{
+                displayAll(data.data);
+                updateCount(data.data);
+                hideSpinner();
+            });
+    }
+});
