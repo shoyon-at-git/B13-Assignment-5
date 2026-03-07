@@ -26,7 +26,7 @@
 </head>
 
 <body class="bg-[#f8fafc]">
-    <header class="bg-white max-w-[1600px] px-20 py-4 flex justify-between items-center">
+    <header class="bg-white max-w-[1600px] mx-auto px-20 py-4 flex justify-between items-center">
         <div id="left-div" class="flex items-center gap-1">
             <img src="assets/github-logo.png" alt="GitHub logo" class="w-9">
             <h2 class="font-semibold text-xl">GitHub Issues Tracker</h2>
@@ -48,7 +48,7 @@
         <div class="flex items-center gap-2">
             <img src="assets/Aperture.png" alt="Aperture.png">
             <div class="">
-                <p class="font-semibold text-[20px]"><span id="count">40</span> Issues</p>
+                <p class="font-semibold text-[20px]"><span id="count">0</span> Issues</p>
                 <p class="text-gray-500">Track and manage your project issues</p>
             </div>
         </div>
@@ -64,6 +64,11 @@
             
         </div>
     </section>
+
+    <section id="spinner" class="max-w-[1110px] mx-auto bg-white mt-6 rounded-md shadow-md flex justify-center py-48 hidden">
+        <span class="loading loading-spinner text-primary"></span>
+    </section>
+
     <section id="issue-card-container" class="bg-[#fbfbfb] rounded-md shadow-md max-w-[1110px]  mx-auto mt-[60px] p-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     
     </section>

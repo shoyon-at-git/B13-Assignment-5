@@ -8,6 +8,15 @@ const createSpans = (arr) =>{
     const htmlEl = arr.map(el => `<span class="bg-orange-300/90 px-1 border text-xs rounded-3xl">${el.toUpperCase()}</span>`);
     return htmlEl.join(" ");
 };
+
+const showSpinner = () => {
+    document.getElementById("spinner").classList.remove("hidden");
+};
+
+const hideSpinner = () => {
+    document.getElementById("spinner").classList.add("hidden");
+};
+
 const updateCount = (arr) =>{
     const updatedCount = arr.length;
     let count = document.getElementById("count");
@@ -18,6 +27,7 @@ const updateCount = (arr) =>{
 
 
 const loadAll = async() =>{
+    showSpinner();
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues"
     const res = await fetch(url);
     const json = await res.json();
@@ -25,13 +35,14 @@ const loadAll = async() =>{
     // console.log(all);
     displayAll(json.data);
     updateCount(json.data);
+    hideSpinner();
 };
 
 const displayAll = (infoArr) =>{
     issueCardContainer.innerHTML = "";
     infoArr.forEach(element => {
         // console.log(element.status);
-        let borderColor = "border-blue-500";
+        let borderColor = "border-purple-500";
         let statusImg = "assets/Closed- Status .png";
         if(element.status === "open"){
             borderColor = "border-green-500";
@@ -76,15 +87,23 @@ loadAll();
 
 document.getElementById("open-btn").addEventListener("click", ()=>{
     filteredOpen = all.filter(issue => issue.status.toLowerCase() ==="open");
-    console.log(filteredOpen);
-    displayAll(filteredOpen);
-    updateCount(filteredOpen);
+    // console.log(filteredOpen);
+    showSpinner();
+    setTimeout(() => {
+        displayAll(filteredOpen);
+        updateCount(filteredOpen);
+        hideSpinner();
+    }, 200);
 });
 document.getElementById("closed-btn").addEventListener("click", ()=>{
     filteredClosed = all.filter(issue => issue.status.toLowerCase() ==="closed");
-    console.log(filteredClosed);
-    displayAll(filteredClosed);
-    updateCount(filteredClosed);
+    // console.log(filteredClosed);
+    showSpinner();
+    setTimeout(() => {
+        displayAll(filteredClosed);
+        updateCount(filteredClosed);
+        hideSpinner();
+    }, 200);
 });
 
 const toggleButtons = (id) =>{
