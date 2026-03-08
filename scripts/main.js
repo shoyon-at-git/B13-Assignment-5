@@ -157,10 +157,10 @@ const displayDetails =(details) =>{
             <p class="text-gray-500">
                 ${details.description}
             </p>
-            <div class="flex gap-28 my-10 bg-gray-100 py-4 px-3 rounded-md">
+            <div class="flex gap-16 lg:gap-20 my-10 bg-gray-100 py-4 px-3 rounded-md">
                 <div class="">
                 <p class="text-gray-700">Asssignee:</p>
-                <p class="text-xl font-bold">${!details.assignee ? "Assignnee not Found" : details.assignee}</p>
+                <p class="text-sm lg:text-xl font-semibold lg:font-bold">${!details.assignee ? "Assignnee not Found" : details.assignee}</p>
                 </div>
                 <div>
                 <p class="text-gray-700">Priority:</p>
