@@ -135,7 +135,7 @@ const displayDetails =(details) =>{
     const detailsContainer = document.getElementById("details-container");
     // console.log(detailsContainer);
     detailsContainer.innerHTML=`
-    <div class="space-y-4">
+    <div class="space-y-6">
             <h1 class="text-xl font-bold">${details.title}</h1>
 
             <div class="text-sm text-gray-500">
@@ -148,14 +148,16 @@ const displayDetails =(details) =>{
                  ${new Date(details.createdAt).toLocaleDateString()}
             </div>
 
-            <p class="text-gray-700">
-                ${details.description}
-            </p>
+            
 
             <div class="flex items-center gap-2 flex-wrap">
                 ${createSpans(details.labels)}
             </div>
-            <div class="flex gap-28 my-10">
+
+            <p class="text-gray-500">
+                ${details.description}
+            </p>
+            <div class="flex gap-28 my-10 bg-gray-100 py-4 px-3 rounded-md">
                 <div class="">
                 <p class="text-gray-700">Asssignee:</p>
                 <p class="text-xl font-bold">${!details.assignee ? "Assignnee not Found" : details.assignee}</p>
