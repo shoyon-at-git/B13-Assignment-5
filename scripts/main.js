@@ -5,7 +5,39 @@ let filteredOpen = [];
 let filteredClosed = [];
 
 const createSpans = (arr) =>{
-    const htmlEl = arr.map(el => `<span class="bg-orange-300/90 px-1 border text-xs rounded-3xl">${el.toUpperCase()}</span>`);
+    let bgColor = "";
+    let textColor = "";
+    let border = "";
+    const htmlEl = arr.map(el =>{
+        const lowerLabel = el.toLowerCase();
+
+        if (lowerLabel === "bug") {
+            bgColor = "bg-red-200";
+            textColor = "text-red-700";
+            border = "border-red-500"
+        } 
+        else if (lowerLabel === "enhancement") {
+            bgColor = "bg-green-200";
+            textColor = "text-green-700" ; 
+            border = "border-green-500"
+     } 
+        else if (lowerLabel === "good first issue") {
+            bgColor = "bg-yellow-200";
+            textColor = "text-yellow-700";
+            border = "border-yellow-500"
+        } 
+        else if (lowerLabel === "documentation") {
+            bgColor = "bg-blue-200";
+            textColor = "text-blue-700";
+            border = "border-blue-500";
+
+        } 
+        else if (lowerLabel === "help wanted") {
+            bgColor = "bg-orange-200";
+            textColor = "text-orange-700";
+            border = "border-orange-500";
+        }
+    return `<span class="${bgColor} ${textColor} px-2 py-[6px] border ${border} text-xs rounded-[100px]">${el.toUpperCase()}</span>`});
     return htmlEl.join(" ");
 };
 
@@ -134,6 +166,16 @@ const displayDetails =(details) =>{
     // console.log(details);
     const detailsContainer = document.getElementById("details-container");
     // console.log(detailsContainer);
+        let textPriority = "text-red-700";
+        let bgPriority = "bg-blue-500";
+        if(details.priority.toLowerCase() === "medium"){
+            textPriority = "text-gray-700";
+            bgPriority = "bg-yellow-300";
+        }
+        else if(details.priority.toLowerCase() === "high"){
+            textPriority = "text-white";
+            bgPriority = "bg-red-500";
+        }
     detailsContainer.innerHTML=`
     <div class="space-y-6">
             <h1 class="text-xl font-bold">${details.title}</h1>
@@ -158,13 +200,13 @@ const displayDetails =(details) =>{
                 ${details.description}
             </p>
             <div class="flex gap-16 lg:gap-20 my-10 bg-gray-100 py-4 px-3 rounded-md">
-                <div class="">
+                <div class="space-y-2">
                 <p class="text-gray-700">Asssignee:</p>
                 <p class="text-sm lg:text-xl font-semibold lg:font-bold">${!details.assignee ? "Assignnee not Found" : details.assignee}</p>
                 </div>
-                <div>
+                <div class = "space-y-1">
                 <p class="text-gray-700">Priority:</p>
-                <p class = "bg-red-500 w-fit px-4 text-white text-center rounded-xl">${details.priority}</p>
+                <p class = "${bgPriority} w-fit px-2 lg:px-4 py-[2px] lg:py-1 ${textPriority} text-center rounded-3xl">${details.priority.toUpperCase()}</p>
                 </div>
             </div>
         </div>
